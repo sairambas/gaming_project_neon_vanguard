@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Vanguard - Top-Down Cyber Arcade</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- In-Game HUD -->
+    <div id="hud">
+      <div class="hud-top">
+        <div class="hud-box">
+          <span class="hud-label">SCORE</span>
+          <span id="score-val" class="hud-value">0</span>
+        </div>
+        <div class="hud-box">
+          <span class="hud-label">WAVE</span>
+          <span id="wave-val" class="hud-value">1</span>
+        </div>
+        <div class="hud-box">
+          <span class="hud-label">HIGH SCORE</span>
+          <span id="high-score-val" class="hud-value">0</span>
+        </div>
+      </div>
+
+      <div class="hud-bottom">
+        <div class="bar-container">
+          <div class="bar-label">HULL INTEGRITY</div>
+          <div class="bar-track">
+            <div id="hp-bar" class="bar-fill hp-fill"></div>
+          </div>
+        </div>
+        <div class="bar-container">
+          <div class="bar-label">DASH THRUSTER</div>
+          <div class="bar-track">
+            <div id="dash-bar" class="bar-fill dash-fill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Start / Title Overlay -->
+    <div id="start-overlay" class="overlay">
+      <div class="modal">
+        <h1 class="glitch-title">NEON VANGUARD</h1>
+        <p class="subtitle">AI-ASSISTED CYBERNETIC ARENA</p>
+
+        <div class="controls-guide">
+          <div class="control-row">
+            <span class="key-badge">W A S D / Arrows</span>
+            <span class="control-desc">Movement & Thrusters</span>
+          </div>
+          <div class="control-row">
+            <span class="key-badge">Mouse</span>
+            <span class="control-desc">Aim Reticle</span>
+          </div>
+          <div class="control-row">
+            <span class="key-badge">Left Click / Space</span>
+            <span class="control-desc">Plasma Blaster</span>
+          </div>
+          <div class="control-row">
+            <span class="key-badge">Shift / Right Click</span>
+            <span class="control-desc">Hyper Dash (Invulnerable)</span>
+          </div>
+          <div class="control-row">
+            <span class="key-badge">M / P</span>
+            <span class="control-desc">Mute SFX / Pause</span>
+          </div>
+        </div>
+
+        <button id="btn-start" class="arcade-btn">INITIALIZE SYSTEM</button>
+      </div>
+    </div>
+
+    <!-- Game Over Overlay -->
+    <div id="gameover-overlay" class="overlay hidden">
+      <div class="modal">
+        <h1 class="gameover-title">VESSEL DESTROYED</h1>
+        <div class="stats-summary">
+          <p>FINAL SCORE: <span id="final-score" class="highlight-val">0</span></p>
+          <p>WAVES SURVIVED: <span id="final-wave" class="highlight-val">0</span></p>
+          <p>ENEMIES PURGED: <span id="final-kills" class="highlight-val">0</span></p>
+        </div>
+        <button id="btn-restart" class="arcade-btn">REDEPLOY VESSEL</button>
+      </div>
+    </div>
+
+    <!-- Pause Overlay -->
+    <div id="pause-overlay" class="overlay hidden">
+      <div class="modal">
+        <h2 class="pause-title">SYSTEM PAUSED</h2>
+        <p>Press <span class="key-badge">P</span> or <span class="key-badge">ESC</span> to Resume</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Scripts (Loaded in dependency order) -->
+  <script src="src/audio.js"></script>
+  <script src="src/level.js"></script>
+  <script src="src/player.js"></script>
+  <script src="src/enemies.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>
